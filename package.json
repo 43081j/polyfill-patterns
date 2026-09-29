@@ -1,0 +1,51 @@
+{
+  "name": "polyfill-patterns",
+  "version": "1.0.0",
+  "description": "AST-grep YAML rule catalog and JavaScript API for detecting ECMAScript polyfills and syntax transform helpers across bundled output code",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "rules",
+    "rules.json",
+    "sgconfig.yml"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./rules.json": "./rules.json",
+    "./sgconfig.yml": "./sgconfig.yml",
+    "./rules/*": "./rules/*"
+  },
+  "scripts": {
+    "build": "tsc",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "keywords": [
+    "polyfill",
+    "ast-grep",
+    "patterns",
+    "rules",
+    "baseline",
+    "web-features",
+    "core-js",
+    "babel",
+    "swc"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "web-features": "^3.32.0",
+    "yaml": "^2.4.0",
+    "zod": "^3.23.0"
+  },
+  "devDependencies": {
+    "@ast-grep/napi": "^0.40.5",
+    "@types/node": "^20.12.0",
+    "typescript": "^5.4.5",
+    "vitest": "^1.5.0"
+  }
+}
