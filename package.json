@@ -5,11 +5,17 @@
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tonypconway/polyfill-patterns.git"
+  },
   "files": [
     "dist",
     "rules",
     "rules.json",
-    "sgconfig.yml"
+    "sgconfig.yml",
+    "LICENSE",
+    "README.md"
   ],
   "exports": {
     ".": {
