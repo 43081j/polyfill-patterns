@@ -33,5 +33,7 @@ rule:
     - pattern: _interopRequireDefault(require("core-js/modules/es.array.flat"))
     - pattern: _interopRequireDefault(require("core-js/modules/es.array.flat-map.js"))
     - pattern: _interopRequireDefault(require("core-js/modules/es.array.flat-map"))
-    - pattern: '$EXPORT({ target: "Array", $$$ }, { flat: $IMPL })'
-    - pattern: '$EXPORT({ target: "Array", $$$ }, { flatMap: $IMPL })'
+    - pattern: '$EXPORT({ target: "Array", proto: $_ }, { flat: $IMPL })'
+    - pattern: '$EXPORT({ target: "Array", proto: $_, $$$ }, { flat: $IMPL })'
+    - pattern: '$EXPORT({ target: "Array", proto: $_ }, { flatMap: $IMPL })'
+    - pattern: '$EXPORT({ target: "Array", proto: $_, $$$ }, { flatMap: $IMPL })'

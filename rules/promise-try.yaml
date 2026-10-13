@@ -17,4 +17,5 @@ rule:
     - pattern: import "core-js/modules/es.promise.try"
     - pattern: import "core-js/actual/promise/try.js"
     - pattern: import "core-js/actual/promise/try"
-    - pattern: '$EXPORT({ target: "Promise", $$$ }, { try: $IMPL })'
+    - pattern: '$EXPORT({ target: "Promise", stat: $_ }, { try: $IMPL })'
+    - pattern: '$EXPORT({ target: "Promise", stat: $_, $$$ }, { try: $IMPL })'

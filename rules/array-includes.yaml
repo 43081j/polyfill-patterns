@@ -39,5 +39,7 @@ rule:
     - pattern: _interopRequireDefault(require("core-js/actual/array/includes"))
     - pattern: _interopRequireDefault(require("core-js/features/array/includes.js"))
     - pattern: _interopRequireDefault(require("core-js/features/array/includes"))
-    - pattern: '$EXPORT({ target: "Array", $$$ }, { includes: $IMPL })'
-    - pattern: "$EXPORT({ target: 'Array', $$$ }, { includes: $IMPL })"
+    - pattern: '$EXPORT({ target: "Array", proto: $_ }, { includes: $IMPL })'
+    - pattern: '$EXPORT({ target: "Array", proto: $_, $$$ }, { includes: $IMPL })'
+    - pattern: "$EXPORT({ target: 'Array', proto: $_ }, { includes: $IMPL })"
+    - pattern: "$EXPORT({ target: 'Array', proto: $_, $$$ }, { includes: $IMPL })"

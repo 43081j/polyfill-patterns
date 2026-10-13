@@ -24,5 +24,7 @@ rule:
     - pattern: import "core-js/modules/es.string.pad-start"
     - pattern: import "core-js/modules/es.string.pad-end.js"
     - pattern: import "core-js/modules/es.string.pad-end"
-    - pattern: '$EXPORT({ target: "String", $$$ }, { padStart: $IMPL })'
-    - pattern: '$EXPORT({ target: "String", $$$ }, { padEnd: $IMPL })'
+    - pattern: '$EXPORT({ target: "String", proto: $_ }, { padStart: $IMPL })'
+    - pattern: '$EXPORT({ target: "String", proto: $_, $$$ }, { padStart: $IMPL })'
+    - pattern: '$EXPORT({ target: "String", proto: $_ }, { padEnd: $IMPL })'
+    - pattern: '$EXPORT({ target: "String", proto: $_, $$$ }, { padEnd: $IMPL })'

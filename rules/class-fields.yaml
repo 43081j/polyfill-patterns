@@ -6,12 +6,14 @@ rule:
   any:
     - pattern: function _classPrivateFieldGet($_, $_) { $$$ }
     - pattern: function _classPrivateFieldSet($_, $_, $_) { $$$ }
-    - pattern: function _defineProperty($_, $_, $_) { $$$ Object.defineProperty($$$) $$$ }
-    - pattern: var _defineProperty = function($_, $_, $_) { $$$ Object.defineProperty($$$) $$$ }
-    - pattern: require("@babel/runtime/helpers/defineProperty")
-    - pattern: import("@babel/runtime/helpers/defineProperty")
+    - pattern: function _classPrivateFieldInitSpec($_, $_, $_) { $$$ }
+    - pattern: function __classPrivateFieldGet($$$) { $$$ }
+    - pattern: function __classPrivateFieldSet($$$) { $$$ }
     - pattern: require("@babel/runtime/helpers/classPrivateFieldGet")
     - pattern: import("@babel/runtime/helpers/classPrivateFieldGet")
-    - pattern: 'function $FN($R, $E) { return $R.get($BRAND($R, $E)) }'
-    - pattern: 'function $FN($R, $E, $T) { return ($E = $TOKEY($E)) in $R ? Object.defineProperty($R, $E, { value: $T, enumerable: !0, configurable: !0, writable: !0 }) : $R[$E] = $T, $R }'
-    - pattern: 'function $FN($OBJ, $KEY, $VAL) { return $KEY in $OBJ ? Object.defineProperty($OBJ, $KEY, { value: $VAL, enumerable: $_, configurable: $_, writable: $_ }) : $OBJ[$KEY] = $VAL, $OBJ }'
+    - pattern: require("@babel/runtime/helpers/classPrivateFieldSet")
+    - pattern: import("@babel/runtime/helpers/classPrivateFieldSet")
+    - pattern: require("@babel/runtime/helpers/classPrivateFieldInitSpec")
+    - pattern: import("@babel/runtime/helpers/classPrivateFieldInitSpec")
+    - pattern: 'function $FN($R, $E, $K, $F) { if ($K === "a" && !$F) throw new TypeError("Private accessor was defined without a getter"); $$$ }'
+    - pattern: 'function $FN($R, $E, $A) { if (!$E.has($R)) throw new TypeError("attempted to " + $A + " private field on non-instance"); return $E.get($R); }'

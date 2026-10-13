@@ -30,4 +30,5 @@ rule:
     - pattern: _interopRequireDefault(require("core-js/actual/object/entries"))
     - pattern: _interopRequireDefault(require("core-js/features/object/entries.js"))
     - pattern: _interopRequireDefault(require("core-js/features/object/entries"))
-    - pattern: '$EXPORT({ target: "Object", $$$ }, { entries: $IMPL })'
+    - pattern: '$EXPORT({ target: "Object", stat: $_ }, { entries: $IMPL })'
+    - pattern: '$EXPORT({ target: "Object", stat: $_, $$$ }, { entries: $IMPL })'

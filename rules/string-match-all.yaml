@@ -17,4 +17,5 @@ rule:
     - pattern: import "core-js/modules/es.string.match-all"
     - pattern: import "core-js/actual/string/match-all.js"
     - pattern: import "core-js/actual/string/match-all"
-    - pattern: '$EXPORT({ target: "String", $$$ }, { matchAll: $IMPL })'
+    - pattern: '$EXPORT({ target: "String", proto: $_ }, { matchAll: $IMPL })'
+    - pattern: '$EXPORT({ target: "String", proto: $_, $$$ }, { matchAll: $IMPL })'

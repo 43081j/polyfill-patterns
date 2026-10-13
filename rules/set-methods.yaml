@@ -30,5 +30,7 @@ rule:
     - pattern: import "core-js/modules/es.set.intersection.v2"
     - pattern: import "core-js/modules/es.set.union.v2.js"
     - pattern: import "core-js/modules/es.set.union.v2"
-    - pattern: '$EXPORT({ target: "Set", $$$ }, { intersection: $IMPL })'
-    - pattern: '$EXPORT({ target: "Set", $$$ }, { union: $IMPL })'
+    - pattern: '$EXPORT({ target: "Set", proto: $_ }, { intersection: $IMPL })'
+    - pattern: '$EXPORT({ target: "Set", proto: $_, $$$ }, { intersection: $IMPL })'
+    - pattern: '$EXPORT({ target: "Set", proto: $_ }, { union: $IMPL })'
+    - pattern: '$EXPORT({ target: "Set", proto: $_, $$$ }, { union: $IMPL })'

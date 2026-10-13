@@ -168,6 +168,11 @@ rule:
     expect(resolved.baselineStatus).toBe('high');
     expect(resolved.baselineYear).toBe(2022);
     expect(resolved.baselineLowDate).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+
+    const optionalChaining = getRuleById('optional-chaining')!;
+    expect(optionalChaining.webFeatureId).toBe('optional-chaining');
+    expect(optionalChaining.webFeaturesId).toBe('optional-chaining');
+    expect(optionalChaining.baselineYear).toBe(2020);
   });
 });
 
@@ -241,5 +246,81 @@ describe('polyfill-patterns: AST-Grep Rule Execution (@ast-grep/napi)', () => {
     ).toBe(true);
 
     expect(matchesRule('optional-chaining', `const name = user?.name;`)).toBe(false);
+  });
+
+  it('detects real class-fields helpers, but ignores generic Map .get() utilities and _defineProperty', () => {
+    expect(
+      matchesRule(
+        'class-fields',
+        `function _classPrivateFieldGet(receiver, privateMap) { return privateMap.get(receiver); }`
+      )
+    ).toBe(true);
+
+    expect(
+      matchesRule(
+        'class-fields',
+        `function _classExtractFieldDescriptor(e, t, n) { if (!t.has(e)) throw new TypeError("attempted to " + n + " private field on non-instance"); return t.get(e); }`
+      )
+    ).toBe(true);
+
+    expect(matchesRule('class-fields', `function yg(e, t) { return e.get(gg(e, t)); }`)).toBe(
+      false
+    );
+
+    expect(
+      matchesRule(
+        'class-fields',
+        `function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }`
+      )
+    ).toBe(false);
+  });
+
+  it('detects Object.assign polyfills, but ignores tslib.__assign and Babel _extends inline syntax helpers', () => {
+    expect(matchesRule('object-assign', `Object.assign = function(target) { return target; };`)).toBe(
+      true
+    );
+
+    expect(
+      matchesRule('object-assign', `_export({ target: "Object", stat: true }, { assign: assignImpl });`)
+    ).toBe(true);
+
+    expect(
+      matchesRule(
+        'object-assign',
+        `var __assign = Object.assign || function(t) { for (var s, i = 1, n = arguments.length; i < n; i++) { s = arguments[i]; } return t; };`
+      )
+    ).toBe(false);
+
+    expect(matchesRule('object-assign', `require("@babel/runtime/helpers/extends");`)).toBe(false);
+  });
+
+  it('detects async-iteration downlevel helpers, but ignores native Symbol.asyncIterator calls', () => {
+    expect(
+      matchesRule(
+        'async-iteration',
+        `function _asyncIterator(iterable) { var method = iterable[Symbol.asyncIterator]; return method.call(iterable); }`
+      )
+    ).toBe(true);
+
+    expect(
+      matchesRule(
+        'async-iteration',
+        `function __asyncValues(o) { if (!Symbol.asyncIterator) throw new TypeError(); return o[Symbol.asyncIterator](); }`
+      )
+    ).toBe(true);
+
+    expect(matchesRule('async-iteration', `const iter = stream[Symbol.asyncIterator]();`)).toBe(
+      false
+    );
+  });
+
+  it('requires proto or stat in core-js $EXPORT patterns to avoid false positives on app functions', () => {
+    expect(
+      matchesRule('array-iterator', `_export({ target: "Array", proto: true }, { values: valuesImpl });`)
+    ).toBe(true);
+
+    expect(
+      matchesRule('array-iterator', `trackEvent({ target: "Array", action: "click" }, { values: 1 });`)
+    ).toBe(false);
   });
 });

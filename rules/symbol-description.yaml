@@ -13,4 +13,5 @@ rule:
     - pattern: import "core-js/modules/es.symbol.description"
     - pattern: import "core-js/actual/symbol/description.js"
     - pattern: import "core-js/actual/symbol/description"
-    - pattern: '$EXPORT({ target: "Symbol", $$$ }, { description: $IMPL })'
+    - pattern: '$EXPORT({ target: "Symbol", proto: $_ }, { description: $IMPL })'
+    - pattern: '$EXPORT({ target: "Symbol", proto: $_, $$$ }, { description: $IMPL })'

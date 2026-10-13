@@ -25,5 +25,7 @@ rule:
     - pattern: _interopRequireDefault(require("core-js/modules/es.string.replace-all"))
     - pattern: _interopRequireDefault(require("core-js/actual/string/replace-all.js"))
     - pattern: _interopRequireDefault(require("core-js/actual/string/replace-all"))
-    - pattern: '$EXPORT({ target: "String", $$$ }, { replaceAll: $IMPL })'
-    - pattern: "$EXPORT({ target: 'String', $$$ }, { replaceAll: $IMPL })"
+    - pattern: '$EXPORT({ target: "String", proto: $_ }, { replaceAll: $IMPL })'
+    - pattern: '$EXPORT({ target: "String", proto: $_, $$$ }, { replaceAll: $IMPL })'
+    - pattern: "$EXPORT({ target: 'String', proto: $_ }, { replaceAll: $IMPL })"
+    - pattern: "$EXPORT({ target: 'String', proto: $_, $$$ }, { replaceAll: $IMPL })"

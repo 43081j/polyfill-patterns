@@ -39,4 +39,5 @@ rule:
     - pattern: _interopRequireDefault(require("core-js/actual/object/group-by"))
     - pattern: _interopRequireDefault(require("core-js/features/object/group-by.js"))
     - pattern: _interopRequireDefault(require("core-js/features/object/group-by"))
-    - pattern: '$EXPORT({ target: "Object", $$$ }, { groupBy: $IMPL })'
+    - pattern: '$EXPORT({ target: "Object", stat: $_ }, { groupBy: $IMPL })'
+    - pattern: '$EXPORT({ target: "Object", stat: $_, $$$ }, { groupBy: $IMPL })'

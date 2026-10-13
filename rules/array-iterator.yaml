@@ -12,4 +12,5 @@ rule:
     - pattern: $_("core-js/modules/es.array.iterator")
     - pattern: import "core-js/modules/es.array.iterator.js"
     - pattern: import "core-js/modules/es.array.iterator"
-    - pattern: '$EXPORT({ target: "Array", $$$ }, { values: $IMPL })'
+    - pattern: '$EXPORT({ target: "Array", proto: $_ }, { values: $IMPL })'
+    - pattern: '$EXPORT({ target: "Array", proto: $_, $$$ }, { values: $IMPL })'

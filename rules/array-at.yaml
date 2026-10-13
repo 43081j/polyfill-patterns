@@ -39,5 +39,7 @@ rule:
     - pattern: _interopRequireDefault(require("core-js/actual/array/at"))
     - pattern: _interopRequireDefault(require("core-js/features/array/at.js"))
     - pattern: _interopRequireDefault(require("core-js/features/array/at"))
-    - pattern: '$EXPORT({ target: "Array", $$$ }, { at: $IMPL })'
-    - pattern: "$EXPORT({ target: 'Array', $$$ }, { at: $IMPL })"
+    - pattern: '$EXPORT({ target: "Array", proto: $_ }, { at: $IMPL })'
+    - pattern: '$EXPORT({ target: "Array", proto: $_, $$$ }, { at: $IMPL })'
+    - pattern: "$EXPORT({ target: 'Array', proto: $_ }, { at: $IMPL })"
+    - pattern: "$EXPORT({ target: 'Array', proto: $_, $$$ }, { at: $IMPL })"
