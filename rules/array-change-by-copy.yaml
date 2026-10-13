@@ -37,7 +37,11 @@ rule:
     - pattern: import "core-js/modules/es.array.to-spliced"
     - pattern: import "core-js/modules/es.array.with.js"
     - pattern: import "core-js/modules/es.array.with"
-    - pattern: '$EXPORT({ target: "Array", $$$ }, { toSorted: $IMPL })'
-    - pattern: '$EXPORT({ target: "Array", $$$ }, { toReversed: $IMPL })'
-    - pattern: '$EXPORT({ target: "Array", $$$ }, { toSpliced: $IMPL })'
-    - pattern: '$EXPORT({ target: "Array", $$$ }, { with: $IMPL })'
+    - pattern: '$EXPORT({ target: "Array", proto: $_ }, { toSorted: $IMPL })'
+    - pattern: '$EXPORT({ target: "Array", proto: $_, $$$ }, { toSorted: $IMPL })'
+    - pattern: '$EXPORT({ target: "Array", proto: $_ }, { toReversed: $IMPL })'
+    - pattern: '$EXPORT({ target: "Array", proto: $_, $$$ }, { toReversed: $IMPL })'
+    - pattern: '$EXPORT({ target: "Array", proto: $_ }, { toSpliced: $IMPL })'
+    - pattern: '$EXPORT({ target: "Array", proto: $_, $$$ }, { toSpliced: $IMPL })'
+    - pattern: '$EXPORT({ target: "Array", proto: $_ }, { with: $IMPL })'
+    - pattern: '$EXPORT({ target: "Array", proto: $_, $$$ }, { with: $IMPL })'

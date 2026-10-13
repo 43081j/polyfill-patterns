@@ -39,5 +39,7 @@ rule:
     - pattern: _interopRequireDefault(require("core-js/actual/object/has-own"))
     - pattern: _interopRequireDefault(require("core-js/features/object/has-own.js"))
     - pattern: _interopRequireDefault(require("core-js/features/object/has-own"))
-    - pattern: '$EXPORT({ target: "Object", $$$ }, { hasOwn: $IMPL })'
-    - pattern: "$EXPORT({ target: 'Object', $$$ }, { hasOwn: $IMPL })"
+    - pattern: '$EXPORT({ target: "Object", stat: $_ }, { hasOwn: $IMPL })'
+    - pattern: '$EXPORT({ target: "Object", stat: $_, $$$ }, { hasOwn: $IMPL })'
+    - pattern: "$EXPORT({ target: 'Object', stat: $_ }, { hasOwn: $IMPL })"
+    - pattern: "$EXPORT({ target: 'Object', stat: $_, $$$ }, { hasOwn: $IMPL })"

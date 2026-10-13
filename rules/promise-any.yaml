@@ -39,4 +39,5 @@ rule:
     - pattern: _interopRequireDefault(require("core-js/actual/promise/any"))
     - pattern: _interopRequireDefault(require("core-js/features/promise/any.js"))
     - pattern: _interopRequireDefault(require("core-js/features/promise/any"))
-    - pattern: '$EXPORT({ target: "Promise", $$$ }, { any: $IMPL })'
+    - pattern: '$EXPORT({ target: "Promise", stat: $_ }, { any: $IMPL })'
+    - pattern: '$EXPORT({ target: "Promise", stat: $_, $$$ }, { any: $IMPL })'

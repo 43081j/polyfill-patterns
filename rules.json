@@ -560,7 +560,7 @@
       "id": "optional-chaining",
       "name": "Optional Chaining Operator (?.)",
       "astGrepRulePath": "rules/optional-chaining.yaml",
-      "webFeatureId": "object-object",
+      "webFeatureId": "optional-chaining",
       "bcdId": "javascript.operators.optional_chaining",
       "baselineStatus": "high",
       "baselineYear": 2020,
@@ -572,7 +572,7 @@
         "swc"
       ],
       "esSamplesId": "optional-chaining-operator",
-      "webFeaturesId": "object-object"
+      "webFeaturesId": "optional-chaining"
     },
     {
       "id": "global-this",

@@ -4,8 +4,10 @@ severity: info
 language: javascript
 rule:
   any:
-    - pattern: $_[Symbol.asyncIterator]($$$)
-    - pattern: $_[window.Symbol.asyncIterator]($$$)
+    - pattern: function _asyncIterator($_) { $$$ Symbol.asyncIterator $$$ }
+    - pattern: function __asyncValues($_) { $$$ Symbol.asyncIterator $$$ }
+    - pattern: function _asyncIterator($_) { $$$ }
+    - pattern: function __asyncValues($_) { $$$ }
     - pattern: Symbol.asyncIterator = $_
     - pattern: window.Symbol.asyncIterator = $_
     - pattern: globalThis.Symbol.asyncIterator = $_

@@ -39,4 +39,5 @@ rule:
     - pattern: _interopRequireDefault(require("core-js/actual/promise/with-resolvers"))
     - pattern: _interopRequireDefault(require("core-js/features/promise/with-resolvers.js"))
     - pattern: _interopRequireDefault(require("core-js/features/promise/with-resolvers"))
-    - pattern: '$EXPORT({ target: "Promise", $$$ }, { withResolvers: $IMPL })'
+    - pattern: '$EXPORT({ target: "Promise", stat: $_ }, { withResolvers: $IMPL })'
+    - pattern: '$EXPORT({ target: "Promise", stat: $_, $$$ }, { withResolvers: $IMPL })'

@@ -22,5 +22,7 @@ rule:
     - pattern: import "core-js/modules/es.string.trim-start"
     - pattern: import "core-js/modules/es.string.trim-end.js"
     - pattern: import "core-js/modules/es.string.trim-end"
-    - pattern: '$EXPORT({ target: "String", $$$ }, { trimStart: $IMPL })'
-    - pattern: '$EXPORT({ target: "String", $$$ }, { trimEnd: $IMPL })'
+    - pattern: '$EXPORT({ target: "String", proto: $_ }, { trimStart: $IMPL })'
+    - pattern: '$EXPORT({ target: "String", proto: $_, $$$ }, { trimStart: $IMPL })'
+    - pattern: '$EXPORT({ target: "String", proto: $_ }, { trimEnd: $IMPL })'
+    - pattern: '$EXPORT({ target: "String", proto: $_, $$$ }, { trimEnd: $IMPL })'

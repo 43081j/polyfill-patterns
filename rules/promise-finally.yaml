@@ -17,4 +17,5 @@ rule:
     - pattern: import "core-js/modules/es.promise.finally"
     - pattern: import "core-js/actual/promise/finally.js"
     - pattern: import "core-js/actual/promise/finally"
-    - pattern: '$EXPORT({ target: "Promise", $$$ }, { finally: $IMPL })'
+    - pattern: '$EXPORT({ target: "Promise", proto: $_ }, { finally: $IMPL })'
+    - pattern: '$EXPORT({ target: "Promise", proto: $_, $$$ }, { finally: $IMPL })'
