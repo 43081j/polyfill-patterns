@@ -7,7 +7,7 @@
   "types": "./dist/index.d.ts",
   "repository": {
     "type": "git",
-    "url": "https://github.com/tonypconway/polyfill-patterns.git"
+    "url": "https://github.com/43081j/polyfill-patterns.git"
   },
   "files": [
     "dist",
